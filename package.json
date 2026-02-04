@@ -1,0 +1,17 @@
+{
+    "name": "vibeoracle",
+    "version": "1.0.0",
+    "description": "AI-Powered Sentiment Oracle for Trenches/Base",
+    "scripts": {
+          "compile": "npx hardhat compile",
+          "deploy:testnet": "npx hardhat run scripts/deploy.js --network baseSepolia",
+          "frontend": "cd frontend && npm run dev",
+          "backend": "cd backend && python main.py"
+    },
+    "devDependencies": {
+          "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+          "dotenv": "^16.3.1",
+          "hardhat": "^2.19.0"
+    },
+    "license": "MIT"
+}
