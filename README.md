@@ -1,183 +1,190 @@
-# VibeOracle
+# 🔮 VibeOracle
 
 ## AI-Powered Sentiment Oracle for Trenches/Base
 
-> Know the vibe before you ape. Real-time social sentiment analysis powered by Claude AI, delivered on-chain.
+> **Know the vibe before you ape.** Real-time social sentiment analysis powered by Claude AI, delivered on-chain.
+>
+> [![Built on Base](https://img.shields.io/badge/Built%20on-Base-blue)](https://base.org)
+> [![Powered by Claude](https://img.shields.io/badge/Powered%20by-Claude%20AI-purple)](https://anthropic.com)
+> [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 >
 > Built for the **Vibe Coding Hackathon** by CreatorBid.
 >
-> ## The Problem
+> ---
+>
+> ## 🎯 The Problem
 >
 > Tokens launch on Trenches every day, but traders have no reliable way to gauge real social sentiment. They rely on gut feeling, hype cycles, and FOMO - often getting rugged or missing genuine opportunities.
 >
-> ## The Solution
+> ## 💡 The Solution
 >
 > VibeOracle is an AI-powered on-chain sentiment oracle that analyzes real-time social data (Twitter/X, Telegram, Discord) for every token launched on Trenches. It uses Claude AI to process social mentions, detect manipulation, and deliver objective sentiment scores directly on-chain.
 >
-> ## How It Works
+> ## ✨ Key Features
 >
-> 1. **Social Scraper** - Collects mentions from public social APIs
-> 2. 2. **Claude AI Engine** - Analyzes posts for sentiment, confidence, and manipulation signals
->    3. 3. **On-Chain Oracle** - Pushes scores (-100 to +100) to a Solidity smart contract on Base
->       4. 4. **Dashboard** - Beautiful real-time UI showing token sentiment leaderboards
->         
->          5. ## Tech Stack
->         
->          6. - **Smart Contract**: Solidity 0.8.19 (deployed on Base L2)
->             - - **Backend**: Python + FastAPI + Claude AI (Anthropic API)
->               - - **Frontend**: Next.js 14 + Tailwind CSS
->                 - - **AI Model**: Claude Sonnet for sentiment analysis
->                   - - **Chain**: Base (Ethereum L2)
->                    
->                     - ## Project Structure
->                    
->                     - ```
->                       vibeoracle/
->                         contracts/SentimentOracle.sol    # On-chain oracle
->                         backend/main.py                  # FastAPI server
->                         backend/sentiment.py             # Claude AI engine
->                         backend/scraper.py               # Social data scraper
->                         frontend/app/page.tsx            # Dashboard UI
->                         hardhat.config.js                # Hardhat config for Base
->                         package.json                     # Root config
->                       ```
+> - **🎯 Real-time Sentiment Scores** — AI-analyzed scores from -100 (extremely bearish) to +100 (extremely bullish)
+> - - **📊 Confidence Ratings** — Know how reliable the signal is based on data quality
+>   - - **🤖 AI-Generated Summaries** — One-line sentiment summaries powered by Claude
+>     - - **⚠️ Manipulation Detection** — Flag suspicious hype, coordinated shilling, and bot activity
+>       - - **📈 Trend Indicators** — See if sentiment is trending up, down, or stable
+>         - - **⛓️ On-Chain Data** — All sentiment data stored on Base for transparency
+>           - - **🔄 Batch Updates** — Gas-efficient bulk oracle updates
+>             - - **💼 Wallet Integration** — Connect with RainbowKit (MetaMask, Coinbase, WalletConnect)
+>              
+>               - ## 🏗️ Architecture
+>              
+>               - ```
+>                 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+>                 │   Social APIs   │────▶│  Python Backend │────▶│  Claude AI API  │
+>                 │ (Twitter, TG)   │     │   (FastAPI)     │     │  (Anthropic)    │
+>                 └─────────────────┘     └────────┬────────┘     └─────────────────┘
+>                                                  │
+>                                                  ▼
+>                                         ┌─────────────────┐
+>                                         │ Smart Contract  │
+>                                         │ (Base L2)       │
+>                                         └────────┬────────┘
+>                                                  │
+>                                                  ▼
+>                                         ┌─────────────────┐
+>                                         │   Frontend      │
+>                                         │ (Next.js + RK)  │
+>                                         └─────────────────┘
+>                 ```
 >
-> ## Quick Start
+> ## 🛠️ Tech Stack
 >
-> ```bash
-> # Install dependencies
-> npm install
+> | Component | Technology |
+> |-----------|------------|
+> | Smart Contract | Solidity 0.8.19 (Base L2) |
+> | Backend | Python + FastAPI |
+> | AI Engine | Claude Sonnet (Anthropic API) |
+> | Frontend | Next.js 14 + Tailwind CSS |
+> | Wallet | RainbowKit + Wagmi + Viem |
+> | Chain | Base (Ethereum L2) |
 >
-> # Compile smart contract
-> npx hardhat compile
+> ## 📁 Project Structure
 >
-> # Run backend
-> cd backend && pip install -r requirements.txt && python main.py
->
-> # Run frontend
-> cd frontend && npm install && npm run dev
+> ```
+> vibeoracle/
+> ├── contracts/
+> │   └── SentimentOracle.sol    # On-chain oracle contract
+> ├── backend/
+> │   ├── main.py                # FastAPI server
+> │   ├── sentiment.py           # Claude AI sentiment engine
+> │   └── scraper.py             # Social data scraper
+> ├── frontend/
+> │   └── app/
+> │       ├── page.tsx           # Main dashboard
+> │       ├── layout.tsx         # Root layout with providers
+> │       └── providers.tsx      # RainbowKit/Wagmi config
+> └── scripts/
+>     └── deploy.js              # Contract deployment
 > ```
 >
-> ## Environment Variables
+> ## 🚀 Quick Start
+>
+> ### Prerequisites
+> - Node.js 18+
+> - - Python 3.10+
+>   - - Anthropic API Key
+>     - - Base Sepolia ETH (for testing)
+>      
+>       - ### Installation
+>      
+>       - ```bash
+>         # Clone the repository
+>         git clone https://github.com/naividh/vibeoracle.git
+>         cd vibeoracle
+>
+>         # Install dependencies
+>         npm install
+>
+>         # Install backend dependencies
+>         cd backend && pip install -r requirements.txt
+>
+>         # Install frontend dependencies
+>         cd frontend && npm install
+>         ```
+>
+> ### Environment Setup
 >
 > Create a `.env` file:
-> ```
-> PRIVATE_KEY=your_wallet_private_key
+>
+> ```env
+> # Anthropic
 > ANTHROPIC_API_KEY=your_claude_api_key
+>
+> # Base
+> BASE_RPC_URL=https://mainnet.base.org
+> PRIVATE_KEY=your_wallet_private_key
+>
+> # Frontend
+> NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=your_project_id
 > ```
 >
-> ## Key Features
+> ### Running Locally
 >
-> - Real-time sentiment scores for any Trenches token
-> - - Confidence ratings showing signal reliability
->   - - AI-generated one-line market summaries
->     - - Manipulation detection to flag suspicious hype
->       - - Batch oracle updates for gas efficiency
->         - - Historical score tracking for trend analysis
->          
->           - ## License
->          
->           - MIT
->          
->           - ---
->           
-## Deployment Guide
-
-### Prerequisites
-
-- Node.js 18+
-- - An Anthropic API key (get one at https://console.anthropic.com)
-  - - A wallet with Base ETH for contract deployment (optional)
-   
-    - ### Quick Start - Frontend Only
-   
-    - 1. **Clone the repository**
-      2. ```bash
-         git clone https://github.com/naividh/vibeoracle.git
-         cd vibeoracle/frontend
-         ```
-
-         2. **Install dependencies**
-         3. ```bash
-            npm install
-            ```
-
-            3. **Set up environment variables**
-            4. ```bash
-               # Create .env.local file
-               ANTHROPIC_API_KEY=your_anthropic_api_key
-               NEXT_PUBLIC_API_URL=/api
-               ```
-
-               4. **Run locally**
-               5. ```bash
-                  npm run dev
-                  ```
-
-                  ### Deploy to Vercel
-
-                  1. **Fork or push this repo to GitHub**
-                 
-                  2. 2. **Connect to Vercel**
-                     3.    - Go to [vercel.com](https://vercel.com)
-                           -    - Import your GitHub repository
-                                -    - Set the root directory to `frontend`
-                                 
-                                     - 3. **Add Environment Variables in Vercel**
-                                       4.    - `ANTHROPIC_API_KEY` - Your Claude API key
-                                         
-                                             - 4. **Deploy!**
-                                               5.    - Vercel will automatically build and deploy
-                                                 
-                                                     - ### Deploy Smart Contract to Base
-                                                 
-                                                     - 1. **Configure Hardhat**
-                                                       2. ```bash
-                                                          cd vibeoracle
-                                                          npm install
-                                                          ```
-
-                                                          2. **Set environment variables**
-                                                          3. ```bash
-                                                             PRIVATE_KEY=your_wallet_private_key
-                                                             BASE_RPC_URL=https://mainnet.base.org
-                                                             ```
-
-                                                             3. **Deploy contract**
-                                                             4. ```bash
-                                                                npx hardhat run scripts/deploy.js --network base
-                                                                ```
-
-                                                                ### Architecture
-
-                                                                ```
-                                                                vibeoracle/
-                                                                ├── frontend/          # Next.js 14 frontend
-                                                                │   ├── app/
-                                                                │   │   ├── api/tokens/route.ts  # Claude AI sentiment API
-                                                                │   │   └── page.tsx             # Main dashboard
-                                                                ├── backend/           # Python FastAPI (alternative backend)
-                                                                │   ├── main.py
-                                                                │   ├── sentiment.py   # Claude AI integration
-                                                                │   └── scraper.py     # Social media scraper
-                                                                ├── contracts/         # Solidity smart contracts
-                                                                │   └── SentimentOracle.sol
-                                                                └── scripts/           # Deployment scripts
-                                                                ```
-
-                                                                ### API Endpoints
-
-                                                                - `GET /api/tokens` - Returns sentiment analysis for all tracked tokens
-                                                               
-                                                                - ### Tech Stack
-                                                               
-                                                                - - **Frontend**: Next.js 14, React, Tailwind CSS
-                                                                  - - **AI**: Claude Sonnet (Anthropic API)
-                                                                    - - **Blockchain**: Base L2 (Ethereum)
-                                                                      - - **Smart Contract**: Solidity, Hardhat
-                                                                       
-                                                                        - ---
-
-                                                                        Built with vibes, powered by Claude AI 🚀
+> ```bash
+> # Run backend
+> cd backend && python main.py
 >
-> Built with vibes, powered by Claude AI on Base.
+> # Run frontend
+> cd frontend && npm run dev
+>
+> # Deploy contract (optional)
+> npx hardhat run scripts/deploy.js --network base
+> ```
+>
+> ## 📜 Smart Contract
+>
+> The `SentimentOracle` contract stores:
+> - Sentiment scores (-100 to +100)
+> - - Confidence percentages (0-100)
+>   - - Manipulation risk levels (low/medium/high)
+>     - - Trend indicators (up/down/stable)
+>       - - AI-generated summaries
+>         - - Score history for trend analysis
+>          
+>           - ### Key Functions
+>          
+>           - ```solidity
+>             // Update sentiment for a token
+>             function updateSentiment(
+>                 address token,
+>                 int8 score,
+>                 uint32 confidence,
+>                 uint32 mentionCount,
+>                 string calldata summary,
+>                 uint8 manipulationRisk,
+>                 int8 trend
+>             ) external onlyUpdater;
+>
+>             // Get sentiment data
+>             function getSentiment(address token) external view returns (SentimentData memory);
+>
+>             // Batch update multiple tokens
+>             function batchUpdateSentiment(...) external onlyUpdater;
+>             ```
+>
+> ## 🔗 Links
+>
+> - **Live Demo:** [vibeoracle.vercel.app](https://vibeoracle-git-main-naividhs-projects.vercel.app)
+> - - **GitHub:** [github.com/naividh/vibeoracle](https://github.com/naividh/vibeoracle)
+>   - - **Contract:** [BaseScan](https://basescan.org/address/0x...)
+>    
+>     - ## 🤝 Built With
+>    
+>     - - [Anthropic Claude](https://anthropic.com) — AI sentiment analysis
+>       - - [Base](https://base.org) — Ethereum L2 for low-cost on-chain data
+>         - - [RainbowKit](https://rainbowkit.com) — Wallet connection
+>           - - [Wagmi](https://wagmi.sh) — React hooks for Ethereum
+>             - - [Next.js](https://nextjs.org) — React framework
+>              
+>               - ## 📄 License
+>              
+>               - MIT License - see [LICENSE](LICENSE) for details.
+>              
+>               - ---
+>
+> **Built with vibes, powered by Claude AI. 🔮**
