@@ -80,5 +80,104 @@
 >           - MIT
 >          
 >           - ---
+>           
+## Deployment Guide
+
+### Prerequisites
+
+- Node.js 18+
+- - An Anthropic API key (get one at https://console.anthropic.com)
+  - - A wallet with Base ETH for contract deployment (optional)
+   
+    - ### Quick Start - Frontend Only
+   
+    - 1. **Clone the repository**
+      2. ```bash
+         git clone https://github.com/naividh/vibeoracle.git
+         cd vibeoracle/frontend
+         ```
+
+         2. **Install dependencies**
+         3. ```bash
+            npm install
+            ```
+
+            3. **Set up environment variables**
+            4. ```bash
+               # Create .env.local file
+               ANTHROPIC_API_KEY=your_anthropic_api_key
+               NEXT_PUBLIC_API_URL=/api
+               ```
+
+               4. **Run locally**
+               5. ```bash
+                  npm run dev
+                  ```
+
+                  ### Deploy to Vercel
+
+                  1. **Fork or push this repo to GitHub**
+                 
+                  2. 2. **Connect to Vercel**
+                     3.    - Go to [vercel.com](https://vercel.com)
+                           -    - Import your GitHub repository
+                                -    - Set the root directory to `frontend`
+                                 
+                                     - 3. **Add Environment Variables in Vercel**
+                                       4.    - `ANTHROPIC_API_KEY` - Your Claude API key
+                                         
+                                             - 4. **Deploy!**
+                                               5.    - Vercel will automatically build and deploy
+                                                 
+                                                     - ### Deploy Smart Contract to Base
+                                                 
+                                                     - 1. **Configure Hardhat**
+                                                       2. ```bash
+                                                          cd vibeoracle
+                                                          npm install
+                                                          ```
+
+                                                          2. **Set environment variables**
+                                                          3. ```bash
+                                                             PRIVATE_KEY=your_wallet_private_key
+                                                             BASE_RPC_URL=https://mainnet.base.org
+                                                             ```
+
+                                                             3. **Deploy contract**
+                                                             4. ```bash
+                                                                npx hardhat run scripts/deploy.js --network base
+                                                                ```
+
+                                                                ### Architecture
+
+                                                                ```
+                                                                vibeoracle/
+                                                                ├── frontend/          # Next.js 14 frontend
+                                                                │   ├── app/
+                                                                │   │   ├── api/tokens/route.ts  # Claude AI sentiment API
+                                                                │   │   └── page.tsx             # Main dashboard
+                                                                ├── backend/           # Python FastAPI (alternative backend)
+                                                                │   ├── main.py
+                                                                │   ├── sentiment.py   # Claude AI integration
+                                                                │   └── scraper.py     # Social media scraper
+                                                                ├── contracts/         # Solidity smart contracts
+                                                                │   └── SentimentOracle.sol
+                                                                └── scripts/           # Deployment scripts
+                                                                ```
+
+                                                                ### API Endpoints
+
+                                                                - `GET /api/tokens` - Returns sentiment analysis for all tracked tokens
+                                                               
+                                                                - ### Tech Stack
+                                                               
+                                                                - - **Frontend**: Next.js 14, React, Tailwind CSS
+                                                                  - - **AI**: Claude Sonnet (Anthropic API)
+                                                                    - - **Blockchain**: Base L2 (Ethereum)
+                                                                      - - **Smart Contract**: Solidity, Hardhat
+                                                                       
+                                                                        - ---
+
+                                                                        Built with vibes, powered by Claude AI 🚀
 >
 > Built with vibes, powered by Claude AI on Base.
